@@ -41,45 +41,45 @@ room['treasure'].s_to = room['narrow']
 name_of_player = input("Please enter your name: ")
 new_player = Player(name_of_player, "outside")
 # Write a loop that:
-#
-# * Prints the current room name
-print(new_player.curr_location)
-# * Prints the current description (the textwrap module might be useful here).
-print(room['outside'])
-# * Waits for user input and decides what to do.
-move_to_new_room = input(
-    "Please select a direction\
-         (n)orth, (s)outh, (e)ast, or (w)est Or q(uit): ").lower()
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-if move_to_new_room == "n":
-    if room[new_player.curr_location].n_to:
-        new_player.curr_location = room[new_player.curr_location].n_to
-        print(f'{new_player.curr_location}')
-    elif not room[new_player.curr_location].n_to:
-        print("Cannot go north! Choose another direction.")
-elif move_to_new_room == "s":
-    if room[new_player.curr_location].s_to:
-        new_player.curr_location = room[new_player.curr_location].s_to
-        print(f'{new_player.curr_location}')
-    elif not room[new_player.curr_location].s_to:
-        print("Cannot go south! Choose another direction.")
-elif move_to_new_room == "w":
-    if room[new_player.curr_location].w_to:
-        new_player.curr_location = room[new_player.curr_location].w_to
-        print(f'{new_player.curr_location}')
-    elif not room[new_player.curr_location].w_to:
-        print("Cannot go west! Choose another direction.")
-elif move_to_new_room == "e":
-    if room[new_player.curr_location].e_to:
-        new_player.curr_location = room[new_player.curr_location].e_to
-        print(f'{new_player.curr_location}')
-    elif not room[new_player.curr_location].e_to:
-        print("Cannot go east! Choose another direction.")
-else:
-    print("Command not recognized. Please select n,s,e,w or q. ")
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
-if move_to_new_room == "q":
-    exit()
+while True:
+    # * Prints the current room name
+    # print(new_player.curr_location)
+    # * Prints the current description (the textwrap module might be useful here).
+    print(room['outside'].room_desc)
+    # * Waits for user input and decides what to do.
+    move_to_new_room = input(
+        "Please select a direction\
+            (n)orth, (s)outh, (e)ast, or (w)est Or q(uit): ").lower()
+
+    # If the user enters a cardinal direction, attempt to move to the room there.
+    if move_to_new_room == "n":
+        if room[new_player.curr_location].n_to:
+            new_player.curr_location = room[new_player.curr_location].n_to
+            print(f'{new_player.curr_location}')
+        elif not room[new_player.curr_location].n_to:
+            print("Cannot go north! Choose another direction.")
+    elif move_to_new_room == "s":
+        if room[new_player.curr_location].s_to:
+            new_player.curr_location = room[new_player.curr_location].s_to
+            print(f'{new_player.curr_location}')
+        elif not room[new_player.curr_location].s_to:
+            print("Cannot go south! Choose another direction.")
+    elif move_to_new_room == "w":
+        if room[new_player.curr_location].w_to:
+            new_player.curr_location = room[new_player.curr_location].w_to
+            print(f'{new_player.curr_location}')
+        elif not room[new_player.curr_location].w_to:
+            print("Cannot go west! Choose another direction.")
+    elif move_to_new_room == "e":
+        if room[new_player.curr_location].e_to:
+            new_player.curr_location = room[new_player.curr_location].e_to
+            print(f'{new_player.curr_location}')
+        elif not room[new_player.curr_location].e_to:
+            print("Cannot go east! Choose another direction.")
+    elif move_to_new_room == "q":
+        # If the user enters "q", quit the game.
+        False
+        exit()
+    else:
+        # Print an error message if the movement isn't allowed.
+        print("Command not recognized. Please select n,s,e,w or q. ")
