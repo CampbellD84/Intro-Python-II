@@ -38,48 +38,64 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+
+
+def check_direction(direction, curr_room):
+    rm = direction + '_to'
+    if hasattr(curr_room, rm):
+        return getattr(curr_room, rm)
+    else:
+        print('Cannot proceed in that direction')
+        return curr_room
+
+
 name_of_player = input("Please enter your name: ")
-new_player = Player(name_of_player, "outside")
+new_player = Player(name_of_player, room['outside'])
+
 # Write a loop that:
 while True:
     # * Prints the current room name
-    # print(new_player.curr_location)
+    print(f'{new_player.player_name}, you are in {new_player.curr_location.name}')
     # * Prints the current description (the textwrap module might be useful here).
-    print(room['outside'].room_desc)
+    # print(room['outside'].room_desc)
     # * Waits for user input and decides what to do.
     move_to_new_room = input(
         "Please select a direction\
             (n)orth, (s)outh, (e)ast, or (w)est Or q(uit): ").lower()
 
     # If the user enters a cardinal direction, attempt to move to the room there.
-    if move_to_new_room == "n":
-        if room[new_player.curr_location].n_to:
-            new_player.curr_location = room[new_player.curr_location].n_to
-            print(f'{new_player.curr_location}')
-        elif not room[new_player.curr_location].n_to:
-            print("Cannot go north! Choose another direction.")
-    elif move_to_new_room == "s":
-        if room[new_player.curr_location].s_to:
-            new_player.curr_location = room[new_player.curr_location].s_to
-            print(f'{new_player.curr_location}')
-        elif not room[new_player.curr_location].s_to:
-            print("Cannot go south! Choose another direction.")
-    elif move_to_new_room == "w":
-        if room[new_player.curr_location].w_to:
-            new_player.curr_location = room[new_player.curr_location].w_to
-            print(f'{new_player.curr_location}')
-        elif not room[new_player.curr_location].w_to:
-            print("Cannot go west! Choose another direction.")
-    elif move_to_new_room == "e":
-        if room[new_player.curr_location].e_to:
-            new_player.curr_location = room[new_player.curr_location].e_to
-            print(f'{new_player.curr_location}')
-        elif not room[new_player.curr_location].e_to:
-            print("Cannot go east! Choose another direction.")
-    elif move_to_new_room == "q":
+    # if move_to_new_room == "n":
+    #     if room[new_player.curr_location].n_to:
+    #         new_player.curr_location = room[new_player.curr_location].n_to
+    #         print(f'{new_player.curr_location}')
+    #     elif not room[new_player.curr_location].n_to:
+    #         print("Cannot go north! Choose another direction.")
+    # if move_to_new_room == "s":
+    #     if room[new_player.curr_location].s_to:
+    #         new_player.curr_location = room[new_player.curr_location].s_to
+    #         print(f'{new_player.curr_location}')
+    #     elif not room[new_player.curr_location].s_to:
+    #         print("Cannot go south! Choose another direction.")
+    # if move_to_new_room == "w":
+    #     if room[new_player.curr_location].w_to:
+    #         new_player.curr_location = room[new_player.curr_location].w_to
+    #         print(f'{new_player.curr_location}')
+    #     elif not room[new_player.curr_location].w_to:
+    #         print("Cannot go west! Choose another direction.")
+    # if move_to_new_room == "e":
+    #     if room[new_player.curr_location].e_to:
+    #         new_player.curr_location = room[new_player.curr_location].e_to
+    #         print(f'{new_player.curr_location}')
+    #     elif not room[new_player.curr_location].e_to:
+    #         print("Cannot go east! Choose another direction.")
+
+    new_player.curr_location = check_direction(
+        move_to_new_room, new_player.curr_location)
+
+    if move_to_new_room == "q":
         # If the user enters "q", quit the game.
-        False
-        exit()
+        print("Thanks for playing!")
+        break
     else:
         # Print an error message if the movement isn't allowed.
         print("Command not recognized. Please select n,s,e,w or q. ")

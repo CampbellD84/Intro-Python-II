@@ -8,6 +8,4 @@ class Player:
         self.curr_location = curr_location
 
     def __str__(self):
-        return f'\
-                {self.player_name.capitalize()} is currently\
-                     in or at the {self.curr_location}'
+        return str(self.__dict__)

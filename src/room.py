@@ -8,4 +8,4 @@ class Room:
         self.room_desc = room_desc
 
     def __str__(self):
-        return f'Welcome to {self.name}.  {self.room_desc}'
+        return str(self.__dict__)
