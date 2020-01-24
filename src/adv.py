@@ -63,32 +63,6 @@ while True:
         "Please select a direction\
             (n)orth, (s)outh, (e)ast, or (w)est Or q(uit): ").lower()
 
-    # If the user enters a cardinal direction, attempt to move to the room there.
-    # if move_to_new_room == "n":
-    #     if room[new_player.curr_location].n_to:
-    #         new_player.curr_location = room[new_player.curr_location].n_to
-    #         print(f'{new_player.curr_location}')
-    #     elif not room[new_player.curr_location].n_to:
-    #         print("Cannot go north! Choose another direction.")
-    # if move_to_new_room == "s":
-    #     if room[new_player.curr_location].s_to:
-    #         new_player.curr_location = room[new_player.curr_location].s_to
-    #         print(f'{new_player.curr_location}')
-    #     elif not room[new_player.curr_location].s_to:
-    #         print("Cannot go south! Choose another direction.")
-    # if move_to_new_room == "w":
-    #     if room[new_player.curr_location].w_to:
-    #         new_player.curr_location = room[new_player.curr_location].w_to
-    #         print(f'{new_player.curr_location}')
-    #     elif not room[new_player.curr_location].w_to:
-    #         print("Cannot go west! Choose another direction.")
-    # if move_to_new_room == "e":
-    #     if room[new_player.curr_location].e_to:
-    #         new_player.curr_location = room[new_player.curr_location].e_to
-    #         print(f'{new_player.curr_location}')
-    #     elif not room[new_player.curr_location].e_to:
-    #         print("Cannot go east! Choose another direction.")
-
     new_player.curr_location = check_direction(
         move_to_new_room, new_player.curr_location)
 
@@ -96,6 +70,3 @@ while True:
         # If the user enters "q", quit the game.
         print("Thanks for playing!")
         break
-    else:
-        # Print an error message if the movement isn't allowed.
-        print("Command not recognized. Please select n,s,e,w or q. ")
