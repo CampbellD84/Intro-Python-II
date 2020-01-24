@@ -3,9 +3,10 @@
 
 
 class Room:
-    def __init__(self, name, room_desc):
+    def __init__(self, name, room_desc, items_contained=[]):
         self.name = name
         self.room_desc = room_desc
+        self.items_contained = items_contained
 
     def __str__(self):
         return str(self.__dict__)

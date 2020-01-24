@@ -3,9 +3,13 @@
 
 
 class Player:
-    def __init__(self, player_name, curr_location):
+    def __init__(self, player_name, curr_location, items_found=[]):
         self.player_name = player_name
         self.curr_location = curr_location
+        self.items_found = items_found
+
+    def get_inventory(self):
+        return f'You have {len(self.items_found)} item(s).'
 
     def __str__(self):
         return str(self.__dict__)
