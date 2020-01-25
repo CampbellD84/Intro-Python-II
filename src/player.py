@@ -9,7 +9,7 @@ class Player:
         self.items_found = items_found
 
     def get_inventory(self):
-        return f'You have {len(self.items_found)} item(s).'
+        return self.items_found
 
     def __str__(self):
         return str(self.__dict__)
